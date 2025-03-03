@@ -4,15 +4,23 @@ import { Search } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 
-export default function Hero() {
+interface HeroProps {
+  onSearch: (filters: {
+    name: string;
+    specialty: string;
+    gender: string;
+    language: string;
+  }) => void;
+}
+
+export default function Hero({ onSearch }: HeroProps) {
   const [name, setName] = useState("");
   const [specialty, setSpecialty] = useState<string>("all");
   const [gender, setGender] = useState<string>("all");
   const [language, setLanguage] = useState<string>("all");
 
   const handleSearch = () => {
-    // TODO: Implement search functionality
-    console.log({ name, specialty, gender, language });
+    onSearch({ name, specialty, gender, language });
   };
 
   return (
