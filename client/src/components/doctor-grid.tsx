@@ -14,8 +14,8 @@ export default function DoctorGrid() {
   }
 
   return (
-    <section className="container py-8">
-      <div className="space-y-6">
+    <section className="container max-w-[1200px] mx-auto py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {doctors?.map((doctor) => (
           <DoctorCard key={doctor.id} doctor={doctor} />
         ))}

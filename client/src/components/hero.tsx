@@ -5,13 +5,19 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 
 export default function Hero() {
+  const [name, setName] = useState("");
   const [specialty, setSpecialty] = useState<string>("all");
   const [gender, setGender] = useState<string>("all");
   const [language, setLanguage] = useState<string>("all");
 
+  const handleSearch = () => {
+    // TODO: Implement search functionality
+    console.log({ name, specialty, gender, language });
+  };
+
   return (
     <section className="py-8 px-4 bg-primary/5">
-      <div className="container">
+      <div className="container max-w-[1200px] mx-auto">
         <div className="text-sm breadcrumbs text-muted-foreground mb-6">
           <span>Home</span> / <span>Healthcare Experts</span>
         </div>
@@ -20,10 +26,12 @@ export default function Hero() {
           DOCTOR DIRECTORY / HEALTHCARE EXPERTS
         </h1>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <Input 
             placeholder="Search By Name"
-            className="max-w-[200px]"
+            className="w-[200px]"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <Select value={specialty} onValueChange={setSpecialty}>
@@ -61,7 +69,10 @@ export default function Hero() {
             </SelectContent>
           </Select>
 
-          <Button className="bg-[#384766] hover:bg-[#2d3a52]">
+          <Button 
+            className="bg-[#384766] hover:bg-[#2d3a52]"
+            onClick={handleSearch}
+          >
             <Search className="h-4 w-4 mr-2" />
             SEARCH
           </Button>
