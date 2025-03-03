@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import DoctorCard from "./doctor-card";
 import { type Doctor } from "@shared/schema";
+import DoctorCard from "./doctor-card";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function DoctorGrid() {
   const { data: doctors, isLoading } = useQuery<Doctor[]>({ 
@@ -9,32 +10,27 @@ export default function DoctorGrid() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="container py-8">Loading...</div>;
   }
 
   return (
-    <section className="py-16 container">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold">Our Doctors</h2>
-        
-        <div className="flex gap-4">
-          <Select defaultValue="all">
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Specialty" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Specialties</SelectItem>
-              <SelectItem value="cardiology">Cardiology</SelectItem>
-              <SelectItem value="neurology">Neurology</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="container py-8">
+      <div className="space-y-6">
         {doctors?.map((doctor) => (
           <DoctorCard key={doctor.id} doctor={doctor} />
         ))}
+      </div>
+
+      <div className="flex items-center justify-center gap-2 mt-8">
+        <Button variant="outline" size="icon">
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+        <Button variant="outline" className="min-w-[40px]">1</Button>
+        <Button variant="outline" className="min-w-[40px]">2</Button>
+        <Button variant="outline" className="min-w-[40px]">3</Button>
+        <Button variant="outline" size="icon">
+          <ChevronRight className="h-4 w-4" />
+        </Button>
       </div>
     </section>
   );
