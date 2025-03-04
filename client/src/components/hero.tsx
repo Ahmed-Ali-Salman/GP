@@ -34,16 +34,15 @@ export default function Hero({ onSearch }: HeroProps) {
           DOCTOR DIRECTORY / HEALTHCARE EXPERTS
         </h1>
 
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Input 
             placeholder="Search By Name"
-            className="w-[200px]"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
 
           <Select value={specialty} onValueChange={setSpecialty}>
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger>
               <SelectValue placeholder="Select Specialty" />
             </SelectTrigger>
             <SelectContent>
@@ -51,11 +50,12 @@ export default function Hero({ onSearch }: HeroProps) {
               <SelectItem value="cardiology">Cardiology</SelectItem>
               <SelectItem value="neurology">Neurology</SelectItem>
               <SelectItem value="pediatrics">Pediatrics</SelectItem>
+              <SelectItem value="orthopedics">Orthopedics</SelectItem>
             </SelectContent>
           </Select>
 
           <Select value={gender} onValueChange={setGender}>
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger>
               <SelectValue placeholder="Select Gender" />
             </SelectTrigger>
             <SelectContent>
@@ -66,7 +66,7 @@ export default function Hero({ onSearch }: HeroProps) {
           </Select>
 
           <Select value={language} onValueChange={setLanguage}>
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger>
               <SelectValue placeholder="Select Language" />
             </SelectTrigger>
             <SelectContent>
@@ -74,11 +74,13 @@ export default function Hero({ onSearch }: HeroProps) {
               <SelectItem value="english">English</SelectItem>
               <SelectItem value="hindi">Hindi</SelectItem>
               <SelectItem value="gujarati">Gujarati</SelectItem>
+              <SelectItem value="spanish">Spanish</SelectItem>
+              <SelectItem value="mandarin">Mandarin</SelectItem>
             </SelectContent>
           </Select>
 
           <Button 
-            className="bg-[#384766] hover:bg-[#2d3a52]"
+            className="bg-[#384766] hover:bg-[#2d3a52] col-span-full lg:col-span-1"
             onClick={handleSearch}
           >
             <Search className="h-4 w-4 mr-2" />

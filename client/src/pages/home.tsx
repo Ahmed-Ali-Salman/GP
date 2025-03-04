@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import DoctorGrid from "@/components/doctor-grid";
-import TeamSection from "@/components/team-section";
+import AppointmentBanner from "@/components/appointment-banner";
 import WaitlistForm from "@/components/waitlist-form";
 import Footer from "@/components/footer";
 import { useState } from "react";
@@ -20,7 +20,7 @@ export default function Home() {
       <main>
         <Hero onSearch={setSearchFilters} />
         <DoctorGrid searchFilters={searchFilters} />
-        <TeamSection />
+        <AppointmentBanner />
         <WaitlistForm />
       </main>
       <Footer />
