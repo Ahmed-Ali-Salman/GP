@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { type Doctor } from "@shared/schema";
+import { Link } from "wouter";
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -22,9 +23,11 @@ export default function DoctorCard({ doctor }: DoctorCardProps) {
           <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">{doctor.description}</p>
 
           <div className="flex flex-wrap items-center gap-2 pt-2">
-            <Button variant="link" size="sm" className="text-xs px-0 h-8">
-              Doctor Profile
-            </Button>
+            <Link href={`/doctor/${doctor.id}`}>
+              <Button variant="link" size="sm" className="text-xs px-0 h-8">
+                Doctor Profile
+              </Button>
+            </Link>
             <Button size="sm" className="bg-[#384766] hover:bg-[#2d3a52] text-xs h-8 whitespace-nowrap">
               Book Appointment
             </Button>
